@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Say Hello</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+    <img src="https://media.discordapp.net/attachments/1070413046197014629/1157058681943359638/Snapchat-2017924806.jpg?ex=654d47de&is=653ad2de&hm=35586f27ed000c0549fa793a9e59e784e09c14abb8703dd04b3749fc3d1482c9&=&width=263&height=468">
+    <br>
+    <form action="greet" method="post">
+        {% for message in get_flashed_messages() %}
+             <p>{{ message }}</p>
+         {% endfor %}
+        <br>
+        <input type="text" name="name_input">
+        <br>
+        <input type="submit" value="GREET" id="greet">
+    </form>
+</body>
+</html>
