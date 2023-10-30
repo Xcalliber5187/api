@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, flash
+from flask import Flask, render_template, request, flash, jsonify
 
 app = Flask(__name__)
 app.secret_key = "manbearpig_MUDMAN888"
@@ -18,8 +18,7 @@ def index():
 def greeter():
 	flash("Hi " + str(request.form['name_input']) + ", great to see you!")
 	
-	address = str(request.environ.get('HTTP_X_FORWARDED_FOR', request.remote_addr))
-
+	address = str(jsonify({'ip': request.remote_addr}), 200)
 
 
 
