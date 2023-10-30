@@ -7,5 +7,5 @@ Jinja2==2.11.2
 MarkupSafe==2.0.1
 Werkzeug==1.0.1
 wincertstore==0.2
-discordwebhook==1.0.3
+discord-webhook==1.0.3
 requests==2.31.0
