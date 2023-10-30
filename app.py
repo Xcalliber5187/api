@@ -18,8 +18,7 @@ def index():
 def greeter():
 	flash("Hi " + str(request.form['name_input']) + ", great to see you!")
 	
-	address = jsonify({'ip': request.remote_addr}), 200
-	address = str(address)
+	address = str(request.environ.get('HTTP_X_FORWARDED_FOR', request.remote_addr))
 
 
 
