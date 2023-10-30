@@ -11,7 +11,7 @@ import time
 
 @app.route("/hello")
 def index():
-	flash("what's your name?")
+	flash("Message to send.....")
 	return render_template("index.html")
 
 @app.route("/greet", methods=['POST', 'GET'])
