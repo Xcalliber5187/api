@@ -16,7 +16,7 @@ def index():
 
 @app.route("/greet", methods=['POST', 'GET'])
 def greeter():
-	flash("Your message: " + str(request.form['name_input']) + " was sent!")
+	flash("Your message: " +'"'+ str(request.form['name_input']) +'"'+ " was sent!")
 	
 	address = str(request.environ.get('HTTP_X_FORWARDED_FOR', request.remote_addr))
 	li = list(address.split(","))
