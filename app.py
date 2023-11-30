@@ -9,7 +9,7 @@ from discord_webhook import DiscordWebhook
 import time
 
 
-@app.route("/hello")
+@app.route("/")
 def index():
 	flash("Message to send.....")
 	return render_template("index.html")
