@@ -16,16 +16,17 @@ def index():
 
 @app.route("/greet", methods=['POST', 'GET'])
 def greeter():
-	flash("Your message: " +'"'+ str(request.form['name_input']) +'"'+ " was sent!")
+
+	message = str(request.form['name_input'])
+	flash("Your message: " +'"'+ message +'"'+ " was sent!!")
 	
 	address = str(request.environ.get('HTTP_X_FORWARDED_FOR', request.remote_addr))
 	li = list(address.split(","))
 	address = str(li[0])
 
+	
 
-
-
-	webhook = DiscordWebhook(url="https://discord.com/api/webhooks/1168329715547918396/tInXbaiewZtPjWDSIoscBfgFfbunvddaNZ7HNNWl4nGVSZPgRqENtcXpK7xfpFO1B-TL", content=str(time.ctime())+" "+address+" "+"'"+str(request.form['name_input'])+"'")
+	webhook = DiscordWebhook(url="https://discord.com/api/webhooks/1168329715547918396/tInXbaiewZtPjWDSIoscBfgFfbunvddaNZ7HNNWl4nGVSZPgRqENtcXpK7xfpFO1B-TL", content=str(time.ctime())+" "+address+" "+"'"+message+"'")
 	webhook.execute()
 	return render_template("index.html")
 #Hello Me
