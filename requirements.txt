@@ -10,3 +10,4 @@ wincertstore==0.2
 discordwebhook==1.0.3
 discord-webhook
 requests==2.31.0
+ip2geotools==0.1.6
