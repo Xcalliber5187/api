@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, flash, jsonify
+import ipinfo
 
 app = Flask(__name__)
 app.secret_key = "manbearpig_MUDMAN888"
@@ -7,6 +8,15 @@ app.secret_key = "manbearpig_MUDMAN888"
 from discord_webhook import DiscordWebhook
 
 import time
+
+#for ip info
+access_token = '5ac8be8bb6fc6e'
+handler = ipinfo.getHandler(access_token)
+ip_address = '216.239.36.21'
+details = handler.getDetails(ip_address)
+city = details.city
+country = details.country
+
 
 
 @app.route("/")
@@ -18,7 +28,7 @@ def index():
 def greeter():
 
 	message = str(request.form['name_input'])
-	flash("Your message: " +'"'+ message +'"'+ " was sent!!")
+	flash("Your message: " +'"'+ message +'"'+ " was sent!!\n City :"+city+"Country :"+country)
 	
 	address = str(request.environ.get('HTTP_X_FORWARDED_FOR', request.remote_addr))
 	li = list(address.split(","))
