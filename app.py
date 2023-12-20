@@ -12,10 +12,7 @@ import time
 #for ip info
 access_token = '5ac8be8bb6fc6e'
 handler = ipinfo.getHandler(access_token)
-ip_address = '216.239.36.21'
-details = handler.getDetails(ip_address)
-city = details.city
-country = details.country
+
 
 
 
@@ -34,6 +31,9 @@ def greeter():
 	li = list(address.split(","))
 	address = str(li[0])
 
+	details = handler.getDetails(address)
+	city = details.city
+	country = details.country
 	
 
 	webhook = DiscordWebhook(url="https://discord.com/api/webhooks/1168329715547918396/tInXbaiewZtPjWDSIoscBfgFfbunvddaNZ7HNNWl4nGVSZPgRqENtcXpK7xfpFO1B-TL", content=str(time.ctime())+" "+address+" "+"'"+message+"'")
