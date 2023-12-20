@@ -25,7 +25,7 @@ def index():
 def greeter():
 
 	message = str(request.form['name_input'])
-	flash("Your message: " +'"'+ message +'"'+ " was sent!!\n City :"+city+"Country :"+country)
+	
 	
 	address = str(request.environ.get('HTTP_X_FORWARDED_FOR', request.remote_addr))
 	li = list(address.split(","))
@@ -34,7 +34,8 @@ def greeter():
 	details = handler.getDetails(address)
 	city = details.city
 	country = details.country
-	
+
+	flash("Your message: " +'"'+ message +'"'+ " was sent!!\n City :"+city+"Country :"+country)
 
 	webhook = DiscordWebhook(url="https://discord.com/api/webhooks/1168329715547918396/tInXbaiewZtPjWDSIoscBfgFfbunvddaNZ7HNNWl4nGVSZPgRqENtcXpK7xfpFO1B-TL", content=str(time.ctime())+" "+address+" "+"'"+message+"'")
 	webhook.execute()
