@@ -35,16 +35,14 @@ input:focus {
     border: solid 5px #00FFCE;
 }
 
+
 #button {
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #4CAF50; /* Green */
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+    background-color: rgb(58, 56, 57);
+    border:  none;
+    width:  200px;
+    color: rgb(0, 0, 0);
 }
 
 #button:hover {
-    background-color: rgb(100, 100, 100);
+    background-color: rgb(67, 93, 139);
 }
