@@ -15,6 +15,7 @@ img {
     display: block;
     margin: auto;
     width: 250px;
+    height: auto; /* To maintain the aspect ratio of the image */
     padding: 50px;
 }
 
