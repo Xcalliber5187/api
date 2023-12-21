@@ -9,12 +9,15 @@ p {
     display: inline-block;
     margin:  20px;
 }
+
+
 img {
+    display: block;
     margin: auto;
     width: 250px;
     padding: 50px;
-
 }
+
 input {
   width: 300px;
   margin: 20px 20px;
