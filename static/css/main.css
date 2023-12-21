@@ -33,9 +33,9 @@ input:focus {
     background-color: rgb(58, 56, 57);
     border:  none;
     width:  100px;
-    height: 50px;
+    height: 100px;
     text-align: center;
-    color: rgb(0, 0, 0);
+    color: rgb(0, 50, 0);
 }
 
 #button:hover {
