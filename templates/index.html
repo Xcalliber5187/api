@@ -12,11 +12,13 @@
         {% for message in get_flashed_messages() %}
              <p>{{ message }}</p>
          {% endfor %}
+    </form>
         <br>
         <input type="text" name="name_input">
         <br>
-        <button type="submit">Submit</button>
-    </form>
+        <body>
+        <button id="button" type="submit">Submit</button>
+        </body>
         <br>
         <p>
             {{test}}
