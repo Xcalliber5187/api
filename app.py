@@ -23,7 +23,7 @@ def index():
 	li = list(address.split(","))
 	address = str(li[0])
 	
-	webhook = DiscordWebhook(url="https://discord.com/api/webhooks/1168329715547918396/tInXbaiewZtPjWDSIoscBfgFfbunvddaNZ7HNNWl4nGVSZPgRqENtcXpK7xfpFO1B-TL", content=str(time.ctime())+" "+address+" "+"'"+"GetRequest+"'")
+	webhook = DiscordWebhook(url="https://discord.com/api/webhooks/1168329715547918396/tInXbaiewZtPjWDSIoscBfgFfbunvddaNZ7HNNWl4nGVSZPgRqENtcXpK7xfpFO1B-TL", content=str(time.ctime())+" "+address+" "+"'"+"GetRequest"+"'")
 	webhook.execute()
 	
 	return render_template("index.html", test = "hi")
