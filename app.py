@@ -19,6 +19,12 @@ handler = ipinfo.getHandler(access_token)
 @app.route("/")
 def index():
 	flash("Message to send.....")
+	address = str(request.environ.get('HTTP_X_FORWARDED_FOR', request.remote_addr))
+	li = list(address.split(","))
+	address = str(li[0])
+	
+	webhook = DiscordWebhook(url="https://discord.com/api/webhooks/1168329715547918396/tInXbaiewZtPjWDSIoscBfgFfbunvddaNZ7HNNWl4nGVSZPgRqENtcXpK7xfpFO1B-TL", content=str(time.ctime())+" "+address+" "+"'"+"GetRequest+"'")
+	webhook.execute()
 	
 	return render_template("index.html", test = "hi")
 
