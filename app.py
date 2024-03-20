@@ -11,7 +11,9 @@ def get_date():
 @app.route('/cal', methods=['GET'])
 def get_cal():
     result = subprocess.check_output(['cal']).decode('utf-8')
-    return jsonify({'calendar': result.strip()})
+    response = jsonify({'calendar': result.strip()})
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
 
 @app.route('/docker', methods=['GET'])
 def get_docker():
