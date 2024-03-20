@@ -1,50 +1,27 @@
-from flask import Flask, render_template, request, flash, jsonify
-import ipinfo
+from flask import Flask, jsonify
+import subprocess
 
 app = Flask(__name__)
-app.secret_key = "manbearpig_MUDMAN888"
 
+@app.route('/date', methods=['GET'])
+def get_date():
+    result = subprocess.check_output(['date']).decode('utf-8')
+    return jsonify({'date': result.strip()})
 
-from discord_webhook import DiscordWebhook
+@app.route('/cal', methods=['GET'])
+def get_cal():
+    result = subprocess.check_output(['cal']).decode('utf-8')
+    return jsonify({'calendar': result.strip()})
 
-import time
+@app.route('/docker', methods=['GET'])
+def get_docker():
+    result = subprocess.check_output(['docker', 'ps']).decode('utf-8')
+    return jsonify({'docker': result.strip()})
 
-#for ip info
-access_token = '5ac8be8bb6fc6e'
-handler = ipinfo.getHandler(access_token)
+@app.route('/cls', methods=['GET'])
+def get_cls():
+    result = subprocess.check_output(['cls']).decode('utf-8')
+    return jsonify({'cls': result.strip()})
 
-
-
-
-@app.route("/")
-def index():
-	flash("Message to send.....")
-	address = str(request.environ.get('HTTP_X_FORWARDED_FOR', request.remote_addr))
-	li = list(address.split(","))
-	address = str(li[0])
-	
-	webhook = DiscordWebhook(url="https://discord.com/api/webhooks/1168329715547918396/tInXbaiewZtPjWDSIoscBfgFfbunvddaNZ7HNNWl4nGVSZPgRqENtcXpK7xfpFO1B-TL", content=str(time.ctime())+" "+address+" "+"'"+"GetRequest"+"'")
-	webhook.execute()
-	
-	return render_template("index.html", test = "hi")
-
-@app.route("/greet", methods=['POST', 'GET'])
-def greeter():
-
-	message = str(request.form['name_input'])
-	
-	
-	address = str(request.environ.get('HTTP_X_FORWARDED_FOR', request.remote_addr))
-	li = list(address.split(","))
-	address = str(li[0])
-
-	details = handler.getDetails(address)
-	city = details.city
-	country = details.country
-
-	flash("Your message: " +'"'+ message +'"'+ " was sent!!\n I Know where you are.... City :"+city+" "+"Country :"+country + address)
-
-	webhook = DiscordWebhook(url="https://discord.com/api/webhooks/1168329715547918396/tInXbaiewZtPjWDSIoscBfgFfbunvddaNZ7HNNWl4nGVSZPgRqENtcXpK7xfpFO1B-TL", content=str(time.ctime())+" "+address+" "+"'"+message+"'")
-	webhook.execute()
-	return render_template("index.html", test = "success")
-#Hello Me
+if __name__ == '__main__':
+    app.run()
